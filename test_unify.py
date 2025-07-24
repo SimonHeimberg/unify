@@ -87,6 +87,14 @@ class TestUnitsWithFstrings(unittest.TestCase):
                          unify.unify_quotes('''f"""foo"""''',
                                             preferred_quote="'"))
 
+        self.assertEqual('''x = f'x{d["i"]}' # c''',
+                         unify.unify_quotes('''x = f'xx{d["i"]}' # c''',
+                                            preferred_quote="'"))
+
+        # what would be expected on: '''x = f"xx{d['i']}" # c'''
+        # when ' is preferred
+        # Change the outer and inner quotes? Keep as is?
+
     def test_format_code(self):
         self.assertEqual("x = f'abc' \\\nf'next'\n",
                          unify.format_code('x = f"abc" \\\nf"next"\n',
