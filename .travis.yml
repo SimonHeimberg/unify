@@ -5,6 +5,8 @@ python:
     - "3.4"
     - "3.5"
     - "3.6"
+    - "3.11"
+    - "3.12"
 
 install:
     - python setup.py --quiet install
